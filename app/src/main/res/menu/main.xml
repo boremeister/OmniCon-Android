@@ -1,0 +1,45 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <item
+        android:id="@+id/menu_bt_settings"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/menu_bt_settings"/>
+    
+    <item
+        android:id="@+id/menu_about"
+        android:orderInCategory="200"
+        android:showAsAction="never"
+        android:title="@string/menu_about"
+        android:onClick="showAboutScreen"/>
+    
+    <item
+        android:id="@+id/menu_help"
+        android:orderInCategory="300"
+        android:showAsAction="never"
+        android:title="@string/menu_help"/>
+    
+	<!--  developer -->
+    <item
+        android:id="@+id/menu_manual"
+        android:orderInCategory="400"
+        android:showAsAction="never"
+        android:title="@string/menu_manual"
+        android:onClick="goToManualTestMenu"/>
+
+    <item
+        android:id="@+id/menu_manual2"
+        android:orderInCategory="500"
+        android:showAsAction="never"
+        android:title="Manual control 3"
+        android:onClick="goToManualTest3Menu"/>
+
+    <item
+        android:id="@+id/menu_drive"
+        android:orderInCategory="600"
+        android:showAsAction="never"
+        android:title="@string/menu_drive"
+        android:onClick="goToDriveMenu"/>   
+    <!--  developer -->
+    
+</menu>

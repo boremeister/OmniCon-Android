@@ -1,0 +1,111 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".ManualTestActivity" >
+
+    <TextView
+        android:id="@+id/textViewPairedDevices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="31dp"
+        android:textColor="@color/white"
+        android:text="" />
+
+    <Button
+        android:id="@+id/buttonPairedDevices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewPairedDevices"
+        android:layout_alignBottom="@+id/textViewPairedDevices"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="40dp"
+        android:enabled="false"
+        android:onClick="getPairedDevices"
+        android:text="Paired devices" />
+
+    <Button
+        android:id="@+id/buttonConnect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/buttonSend"
+        android:layout_alignLeft="@+id/textViewPairedDevices"
+        android:onClick="checkBluetooth"
+        android:text="Check Bluetooth" />
+
+    <EditText
+        android:id="@+id/editTextData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonPairedDevices"
+        android:layout_alignRight="@+id/buttonSend"
+        android:layout_below="@+id/buttonPairedDevices"
+        android:layout_marginTop="66dp"
+        android:ems="10"
+        android:hint="Data"
+        android:textColor="@color/white" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/editTextDeviceName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonPairedDevices"
+        android:layout_below="@+id/editTextData"
+        android:layout_marginTop="38dp"
+        android:ems="10"
+        android:hint="Device name"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/buttonSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/editTextDeviceName"
+        android:layout_below="@+id/editTextDeviceName"
+        android:layout_marginTop="45dp"
+        android:enabled="false"
+        android:onClick="sendToTarget"
+        android:text="Send" />
+
+    <TextView
+        android:id="@+id/textViewMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/editTextData"
+        android:layout_marginRight="14dp"
+        android:layout_toLeftOf="@+id/editTextData"
+        android:textColor="@color/white"
+        android:text="Message:" />
+
+    <TextView
+        android:id="@+id/textViewDeviceName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/editTextDeviceName"
+        android:layout_alignLeft="@+id/textViewMessage"
+        android:textColor="@color/white"
+        android:text="Device name:" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/textViewRespond"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/editTextDeviceName"
+        android:layout_alignEnd="@+id/editTextDeviceName" />
+
+</RelativeLayout>

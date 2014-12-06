@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".DriveScreenActivity" >
+
+    <EditText
+        android:id="@+id/edit_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/edit_message" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/sendMessage"
+        android:layout_below="@+id/sendMessage"
+        android:layout_marginTop="50dp"
+        android:onClick="sendToBluetooth"
+        android:text="@string/button_sendToBluetooth" />
+
+    <Button
+        android:id="@+id/sendMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/edit_message"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp"
+        android:onClick="sendMessage"
+        android:text="@string/button_send" />
+    
+    <ListView
+      android:id="@+id/listViewPairedDevices"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:visibility="visible" >
+   </ListView>
+
+</RelativeLayout>
