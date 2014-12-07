@@ -26,6 +26,12 @@ public class MainActivity extends Activity {
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("UUID", "00001101-0000-1000-8000-00805F9B34FB");
         editor.commit();
+        editor.putString("RESPONSE_STARTCHAR", "~");
+        editor.commit();
+        editor.putString("RESPONSE_ENDCHAR", "#");
+        editor.commit();
+        editor.putString("DEVICE_NAME", "HC-05");
+        editor.commit();
 
     }
 

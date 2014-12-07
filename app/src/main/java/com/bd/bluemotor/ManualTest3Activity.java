@@ -25,70 +25,71 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.UUID;
 
-
 public class ManualTest3Activity extends ActionBarActivity {
 
-    Handler bluetoothIn;
-    final int handlerState = 0;
     private StringBuilder recDataString = new StringBuilder();
     private ConnectedThread mConnectedThread;
-
+    BoreToolbox bt;
+    Handler handler;
     TextView tvRespond, tvRespondLength;
     EditText etMessage;
-
-    BoreToolbox bt;
 
     private static UUID DEVICE_UUID;
     private static Set<BluetoothDevice> pairedDevices = null;
     private static BluetoothAdapter btAdapter = null;
-    String deviceName = "HC-05";
+    //String deviceName = "HC-05";
+    String deviceName, responseStartChar, responseEndChar;
+
     private static BluetoothDevice targetDevice = null;
     private static BluetoothSocket deviceSocket = null;
 
     private static String LOG_TAG = "com.bd.bluemotor.ManualTest3Activity";
-
-    /*
-    * handler for receiving data from BT module
-    * */
-
-     Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-
-            Bundle bundle = msg.getData();
-            String myMsg = bundle.getString("myKey");
-
-            recDataString.append(myMsg);                                      //keep appending to string until ~
-            int endOfLineIndex = recDataString.indexOf("#");                    // determine the end-of-line
-            if (endOfLineIndex > 0) {                                           // make sure there data before ~
-                String dataInPrint = recDataString.substring(0, endOfLineIndex);    // extract string
-                tvRespond.setText("Data Received = " + dataInPrint);
-                int dataLength = dataInPrint.length();                          //get length of data received
-                tvRespondLength.setText("String Length = " + String.valueOf(dataLength));
-
-                recDataString.delete(0, recDataString.length());                    //clear all string data
-                dataInPrint = " ";
-            }
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manual_test3);
 
+        // UI fields
         tvRespond = (TextView) findViewById(R.id.textViewRespond);
         tvRespondLength = (TextView) findViewById(R.id.textViewRespondLength);
         etMessage = (EditText) findViewById(R.id.editTextData);
-
-        bt = new BoreToolbox(getApplicationContext());
 
         // read values from settings file
         SharedPreferences settings = getSharedPreferences("OMNICON_PREF", 0);
         String uuid = settings.getString("UUID", null);
         DEVICE_UUID = UUID.fromString(uuid);
+        deviceName = settings.getString("DEVICE_NAME", null);
+        responseStartChar = settings.getString("RESPONSE_STARTCHAR", null);
+        responseEndChar = settings.getString("RESPONSE_ENDCHAR", null);
+
+        bt = new BoreToolbox(getApplicationContext());
 
         btAdapter = BluetoothAdapter.getDefaultAdapter();
+
+        /*
+        * handler for receiving data from BT module
+        */
+        handler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+
+                Bundle bundle = msg.getData();
+                String myMsg = bundle.getString("bt_response");
+
+                recDataString.append(myMsg);                                        //keep appending to string until end char
+                int endOfLineIndex = recDataString.indexOf("#");                    // determine the end-of-line
+                if (endOfLineIndex > 0) {                                           // make sure there data before ~
+                    String dataInPrint = recDataString.substring(1, endOfLineIndex);    // extract string (without start char)
+                    tvRespond.setText("Data Received = " + dataInPrint);
+                    int dataLength = dataInPrint.length();                          //get length of data received
+                    tvRespondLength.setText("String Length = " + String.valueOf(dataLength));
+
+                    recDataString.delete(0, recDataString.length());                    //clear all string data
+                    dataInPrint = " ";
+                }
+            }
+        };
 
     }
 
@@ -186,7 +187,9 @@ public class ManualTest3Activity extends ActionBarActivity {
 
     }
 
-    //create new class for connect thread
+    /*
+    * class for thread which is used for sending to and receiving from (listening) bluetooth module
+    */
     private class ConnectedThread extends Thread {
         private final InputStream mmInStream;
         private final OutputStream mmOutStream;
@@ -213,50 +216,22 @@ public class ManualTest3Activity extends ActionBarActivity {
             byte[] buffer = new byte[256];
             int bytes;
 
-            Message msg1 = handler.obtainMessage();
-            Bundle bundle1 = new Bundle();
-            bundle1.putString("myKey", "~Rece");
-            msg1.setData(bundle1);
-            handler.sendMessage(msg1);
-
-            Message msg2 = handler.obtainMessage();
-            Bundle bundle2 = new Bundle();
-            bundle2.putString("myKey", "+ived");
-            msg2.setData(bundle2);
-            handler.sendMessage(msg2);
-
-            Message msg3 = handler.obtainMessage();
-            Bundle bundle3 = new Bundle();
-            bundle3.putString("myKey", "+x#");
-            msg3.setData(bundle3);
-            handler.sendMessage(msg3);
-
-            /*
-            //while (true) {
+            while (true) {
                 try {
                     bytes = mmInStream.read(buffer);            //read bytes from input buffer
                     String readMessage = new String(buffer, 0, bytes);
-                    // Send the obtained bytes to the UI Activity via handler
 
-                    //if(!readMessage.isEmpty()) {
-
-                    //handler.sendEmptyMessage(0);
-
-
+                    // Send the obtained bytes to the activity via handler
                     Message msg = handler.obtainMessage();
                     Bundle bundle = new Bundle();
-                    bundle.putString("myKey", "Blabla");
+                    bundle.putString("bt_response", readMessage);
                     msg.setData(bundle);
                     handler.sendMessage(msg);
 
-                    //}
-                    //bluetoothIn.obtainMessage(handlerState, bytes, -1, readMessage).sendToTarget();
                 } catch (IOException e) {
                     //break;
                 }
-            //}
-            */
-
+            }
         }
 
         // write method
