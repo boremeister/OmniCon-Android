@@ -1,7 +1,9 @@
 package com.bd.bluemotor;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,7 +19,14 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);        
+        setContentView(R.layout.activity_main);
+
+        // save some data into settings
+        SharedPreferences settings = getSharedPreferences("OMNICON_PREF", MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString("UUID", "00001101-0000-1000-8000-00805F9B34FB");
+        editor.commit();
+
     }
 
     @Override

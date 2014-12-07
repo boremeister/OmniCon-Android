@@ -2,28 +2,28 @@
 <pre-dex-items>
 
     <item
-        dex="C:\Delo\Android\BlueMotorNew\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.2-ea0764784c145b01d06d58b4b084802cb1dd7bd7.jar"
-        jar="C:\android\adt-bundle-windows-x86-20131030\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.2\support-annotations-21.0.2.jar"
+        dex="D:\Projects\Android\OmniCon-Android\app\build\intermediates\pre-dexed\debug\classes-251511100b6e186aeee0faec3c5ca61384576f8c.jar"
+        jar="D:\Projects\Android\OmniCon-Android\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.2\classes.jar"
         jumboMode="false"
-        revision="21.0.1"
-        sha1="99373741f99a0556ee293c41e8faa1ca3ae8a4e6"/>
-    <item
-        dex="C:\Delo\Android\BlueMotorNew\app\build\intermediates\pre-dexed\debug\classes-a7a226547d23e5eab3644c61f06abb4226fb7357.jar"
-        jar="C:\Delo\Android\BlueMotorNew\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.2\classes.jar"
-        jumboMode="false"
-        revision="21.0.1"
+        revision="21.0.2"
         sha1="7ae2d38807a43b2f2185ff4089a92c790b579e54"/>
     <item
-        dex="C:\Delo\Android\BlueMotorNew\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-6c6726c939545c1bbabd3f919101bf6db091e073.jar"
-        jar="C:\Delo\Android\BlueMotorNew\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.2\libs\internal_impl-21.0.2.jar"
+        dex="D:\Projects\Android\OmniCon-Android\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.2-fa883d6290039362849f114a5bf013892e2506b3.jar"
+        jar="C:\Program Files (x86)\Android\android-sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.2\support-annotations-21.0.2.jar"
         jumboMode="false"
-        revision="21.0.1"
-        sha1="962e8b12569c56dbdcf8367eb4eac8bb129cd18f"/>
+        revision="21.0.2"
+        sha1="99373741f99a0556ee293c41e8faa1ca3ae8a4e6"/>
     <item
-        dex="C:\Delo\Android\BlueMotorNew\app\build\intermediates\pre-dexed\debug\classes-380d3864fd50498751552ac44decca215867a205.jar"
-        jar="C:\Delo\Android\BlueMotorNew\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.2\classes.jar"
+        dex="D:\Projects\Android\OmniCon-Android\app\build\intermediates\pre-dexed\debug\classes-bebba6bd69cd575ed509bcd9d19df6a24ffce1ad.jar"
+        jar="D:\Projects\Android\OmniCon-Android\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.2\classes.jar"
         jumboMode="false"
-        revision="21.0.1"
+        revision="21.0.2"
         sha1="d1bf02de1c56d942e7a9d093b8610ba1ef4128e3"/>
+    <item
+        dex="D:\Projects\Android\OmniCon-Android\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-0b91c9de22bd8baf84b145c1d4bbc5b03bb7b962.jar"
+        jar="D:\Projects\Android\OmniCon-Android\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.2\libs\internal_impl-21.0.2.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="962e8b12569c56dbdcf8367eb4eac8bb129cd18f"/>
 
 </pre-dex-items>
