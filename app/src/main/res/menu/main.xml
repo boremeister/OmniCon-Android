@@ -28,13 +28,6 @@
         android:onClick="goToManualTestMenu"/>
 
     <item
-        android:id="@+id/menu_manual2"
-        android:orderInCategory="500"
-        android:showAsAction="never"
-        android:title="Manual control 3"
-        android:onClick="goToManualTest3Menu"/>
-
-    <item
         android:id="@+id/menu_drive"
         android:orderInCategory="600"
         android:showAsAction="never"
