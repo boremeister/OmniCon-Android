@@ -22,26 +22,54 @@
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/buttonConnect"
+        <TextView
+            android:id="@+id/textViewBluetoothConnectionStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:textSize="34sp"
-            android:onClick="checkBluetooth"
-            android:text="Check bluetooth" />
+            android:textSize="30sp"
+            android:text="BT status:" />
 
         <View android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/textViewBluetoothConnection"
+            android:id="@+id/textViewBluetoothConnectionOn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey"
+            android:textSize="30sp"
+            android:text="ON" />
+
+        <TextView
+            android:id="@+id/textViewBluetoothConnectionDelimiter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:textSize="34sp"
-            android:text="ON / OFF" />
+            android:textSize="30sp"
+            android:text=" / " />
+
+        <TextView
+            android:id="@+id/textViewBluetoothConnectionOff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey"
+            android:textSize="30sp"
+            android:text="OFF" />
+
+        <View android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/buttonConnect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:onClick="checkBluetooth"
+            android:text="Check" />
 
         <View android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -65,16 +93,6 @@
             android:orientation="vertical"
             android:gravity="center">
 
-            <Button
-                android:id="@+id/buttonPairedDevices"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="34sp"
-                android:enabled="false"
-                android:onClick="getPairedDevices"
-                android:text="Paired devices" />
-
             <View android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
@@ -84,7 +102,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-                android:textSize="24sp"
+                android:textSize="26sp"
                 android:text="Device name:" />
 
             <View android:layout_width="0dp"
@@ -95,8 +113,8 @@
                 android:id="@+id/editTextDeviceName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Device name"
+                android:hint="... device name"
+                android:textSize="26sp"
                 android:textColor="@color/white" />
 
             <View android:layout_width="0dp"
@@ -113,13 +131,35 @@
             android:orientation="vertical"
             android:gravity="center">
 
+            <View android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/buttonPairedDevices"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:enabled="false"
+                android:onClick="getPairedDevices"
+                android:text="Show paired" />
+
+            <View android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
             <TextView
                 android:id="@+id/textViewPairedDevices"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:textSize="24sp"
-                android:text="Paired devices" />
+                android:hint="Paired devices list" />
+
+            <View android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
         </LinearLayout>
 
@@ -151,7 +191,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Enter command"
-                android:textSize="30sp"
+                android:textSize="26sp"
                 android:textColor="@color/white" >
                 <requestFocus />
             </EditText>
@@ -165,7 +205,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="false"
-                android:textSize="34sp"
+                android:textSize="30sp"
+                android:textColor="@color/white"
                 android:onClick="sendToTarget"
                 android:text="Send" />
 
@@ -188,12 +229,24 @@
                 android:layout_weight="1" />
 
             <TextView
+                android:id="@+id/textViewRespondLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="26sp"
+                android:text="Received:" />
+
+            <View android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <TextView
                 android:id="@+id/textViewRespond"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:textSize="26sp"
-                android:text="Received message:" />
+                android:hint=" ... message" />
 
             <View android:layout_width="0dp"
                 android:layout_height="match_parent"

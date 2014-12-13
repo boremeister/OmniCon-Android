@@ -48,17 +48,6 @@ public class MainActivity extends Activity {
     	startActivity(intent);
     }
     
-    public void goToDriveMenu(MenuItem item){
-    	Intent intent = new Intent(this, DriveScreenActivity.class);
-    	startActivity(intent);
-    }
-    
-    public void goToDrive(View view){
-    
-    	Intent intent = new Intent(this, DriveScreenActivity.class);
-    	startActivity(intent);
-    }
-    
     public void goToManualTestMenu(MenuItem item){
     	Intent intent = new Intent(this, ManualTestActivity.class);
     	startActivity(intent);

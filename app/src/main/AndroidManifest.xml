@@ -98,14 +98,6 @@
                 android:value="com.bd.bluemotor.MainActivity" />
         </activity>
         <activity
-            android:name="com.bd.bluemotor.ManualTest2Activity"
-            android:label="@string/title_activity_manual_test2"
-            android:parentActivityName="com.bd.bluemotor.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bd.bluemotor.MainActivity" />
-        </activity>
-        <activity
             android:name="com.bd.bluemotor.ManualTest3Activity"
             android:label="@string/title_activity_manual_test3"
             android:theme="@style/Theme.AppCompat.Light"

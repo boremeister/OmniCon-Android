@@ -6,12 +6,12 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.NavUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,18 +29,16 @@ import java.util.UUID;
 public class ManualTestActivity extends Activity {
 
 	BoreToolbox bt;
-    BluetoothHandler bh;
+    BluetoothHandler bth;
     private ConnectedThread mConnectedThread;
 
 	Button btnPairedDevices, btnSend;
 	EditText etTargetDeviceName, etCommand;
-    TextView tvRespond, tvRespondLength;
+    TextView tvRespond, tvRespondLength, tvBluetoothConnectionOn, tvBluetoothConnectionOff;
     Handler respondHandler;
     private StringBuilder recDataString = new StringBuilder();
 
     private static UUID DEVICE_UUID;
-    private static Set<BluetoothDevice> pairedDevices = null;
-    private static BluetoothAdapter btAdapter = null;
     String deviceName, responseStartChar, responseEndChar;
 
     //private static String LOG_TAG = "com.bd.bluemotor.ManualTestActivity";
@@ -65,6 +63,8 @@ public class ManualTestActivity extends Activity {
         btnSend = (Button) findViewById(R.id.buttonSend);
         etTargetDeviceName = (EditText) findViewById(R.id.editTextDeviceName);
         etTargetDeviceName.setText(deviceName);
+        tvBluetoothConnectionOn = (TextView) findViewById(R.id.textViewBluetoothConnectionOn);
+        tvBluetoothConnectionOff = (TextView) findViewById(R.id.textViewBluetoothConnectionOff);
         tvRespond = (TextView) findViewById(R.id.textViewRespond);
         tvRespondLength = (TextView) findViewById(R.id.textViewRespondLength);
         etCommand = (EditText) findViewById(R.id.editTextCommand);
@@ -72,7 +72,7 @@ public class ManualTestActivity extends Activity {
         bt = new BoreToolbox(getApplicationContext());
 
         // initialize BluetoothHandler
-        bh = new BluetoothHandler(BluetoothAdapter.getDefaultAdapter());
+        bth = new BluetoothHandler(BluetoothAdapter.getDefaultAdapter(), DEVICE_UUID);
 
         /*
         * handler for receiving data from BT module
@@ -108,14 +108,14 @@ public class ManualTestActivity extends Activity {
 
         super.onResume();
 
-        if(bh.isBluetoothReady()){
+        if(bth.isBluetoothReady()){
 
-            if(bh.isTargetDevicePaired1(deviceName)){
+            if(bth.isTargetDevicePaired(deviceName)){
 
                 // try to establish connection
-                if(bh.establishConnection()){
+                if(bth.establishConnection()){
 
-                    mConnectedThread = new ConnectedThread(bh.getSocket());
+                    mConnectedThread = new ConnectedThread(bth.getSocket());
                     mConnectedThread.start();
 
                     bt.print("Connection established OK!");
@@ -134,7 +134,7 @@ public class ManualTestActivity extends Activity {
         super.onPause();
 
         try{
-            bh.getSocket().close();
+            bth.getSocket().close();
         }catch (IOException e){
             // empty
         }
@@ -181,7 +181,7 @@ public class ManualTestActivity extends Activity {
 		String text = "";
 
         // get paired devices
-        ArrayList<String> pairedDevicesList = bh.getPairedDevices1();
+        ArrayList<String> pairedDevicesList = bth.getPairedDevices();
 
 		if(!pairedDevicesList.isEmpty()){
 			// header text
@@ -219,14 +219,23 @@ public class ManualTestActivity extends Activity {
 	public void checkBluetooth(){
 
 		// check if BT supported and enabled
-		if(bh.isBluetoothSupported1()){
-			if(bh.isBluetoothEnabled1()){
-				// everything OK
-				bt.print("BT supported and enabled!");
+		if(bth.isBluetoothSupported()){
+			if(bth.isBluetoothEnabled()){
+				// BT supported and enabled
+                tvBluetoothConnectionOn.setTextSize(36);
+                tvBluetoothConnectionOn.setTextColor(Color.GREEN);
+                tvBluetoothConnectionOff.setTextSize(30);
+                tvBluetoothConnectionOff.setTextColor(Color.GRAY);
+
 				btnPairedDevices.setEnabled(true);
 				btnSend.setEnabled(true);
 			} else {
-				bt.print("Bluetooth NOT enabled!");
+                // Bluetooth NOT enabled
+                tvBluetoothConnectionOn.setTextSize(30);
+                tvBluetoothConnectionOn.setTextColor(Color.GRAY);
+                tvBluetoothConnectionOff.setTextSize(36);
+                tvBluetoothConnectionOff.setTextColor(Color.RED);
+
 				btnPairedDevices.setEnabled(false);
 				btnSend.setEnabled(false);
 			}
@@ -261,6 +270,9 @@ public class ManualTestActivity extends Activity {
             mmOutStream = tmpOut;
         }
 
+        /*
+        * listening to BT module
+        * */
         public void run() {
 
             byte[] buffer = new byte[256];
@@ -284,7 +296,9 @@ public class ManualTestActivity extends Activity {
             }
         }
 
-        // write method
+        /*
+        * send command to BT module
+        * */
         public void write(String input) {
 
             byte[] msgBuffer = input.getBytes();
