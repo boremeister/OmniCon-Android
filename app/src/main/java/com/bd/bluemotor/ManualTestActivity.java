@@ -28,14 +28,14 @@ import java.util.UUID;
 
 public class ManualTestActivity extends Activity {
 
-	BoreToolbox bt;
-    BluetoothHandler bth;
+    private BoreToolbox bt;
+    private BluetoothHandler bth;
     private ConnectedThread mConnectedThread;
 
 	Button btnPairedDevices, btnSend;
 	EditText etTargetDeviceName, etCommand;
     TextView tvRespond, tvRespondLength, tvBluetoothConnectionOn, tvBluetoothConnectionOff;
-    Handler respondHandler;
+    Handler responseHandler;
     private StringBuilder recDataString = new StringBuilder();
 
     private static UUID DEVICE_UUID;
@@ -77,7 +77,7 @@ public class ManualTestActivity extends Activity {
         /*
         * handler for receiving data from BT module
         */
-        respondHandler = new Handler() {
+        responseHandler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
 
@@ -284,11 +284,11 @@ public class ManualTestActivity extends Activity {
                     String readMessage = new String(buffer, 0, bytes);
 
                     // Send the obtained bytes to the activity via handler
-                    Message msg = respondHandler.obtainMessage();
+                    Message msg = responseHandler.obtainMessage();
                     Bundle bundle = new Bundle();
                     bundle.putString("bt_response", readMessage);
                     msg.setData(bundle);
-                    respondHandler.sendMessage(msg);
+                    responseHandler.sendMessage(msg);
 
                 } catch (IOException e) {
                     //break;
