@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="motor_servo_1">0</integer>
+    <integer name="motor_servo_2">1</integer>
+    <integer name="motor_dc_1">2</integer>
+    <integer name="motor_dc_2">3</integer>
+    <integer name="servo_min_angle">0</integer>
+    <integer name="servo_default_angle">90</integer>
+    <integer name="servo_max_angle">180</integer>
+    <integer name="dc_min_speed">0</integer>
+    <integer name="dc_max_speed">100</integer>
+    <integer name="direction_forward">1</integer>
+    <integer name="direction_backward">0</integer>
+    <string name="command_ending_char">#</string>
+</resources>

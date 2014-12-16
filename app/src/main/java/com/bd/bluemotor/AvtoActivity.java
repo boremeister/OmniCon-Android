@@ -3,6 +3,7 @@ package com.bd.bluemotor;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothSocket;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Activity;
@@ -27,6 +28,9 @@ public class AvtoActivity extends Activity {
 
     private BoreToolbox bt;
     private BluetoothHandler bth;
+    private CommandHandler comHan;
+    private Resources res = getResources();
+
     private Handler responseHandler;
     private ConnectedThread mConnectedThread;
 
@@ -60,6 +64,7 @@ public class AvtoActivity extends Activity {
         imgBtnStop = (ImageButton) findViewById(R.id.imageButtonStop);
 
         bt = new BoreToolbox(getApplicationContext());
+        comHan = new CommandHandler(res);
         // initialize BluetoothHandler
         bth = new BluetoothHandler(BluetoothAdapter.getDefaultAdapter(), DEVICE_UUID);
 
@@ -163,18 +168,13 @@ public class AvtoActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
-    public void carStop(View view){
+    public void carMiddle(View view){
 
         // TODO - prepare command list/xml/table - add instruction translation into new 'values' (../res/values/instructions.xml) folder
 
         // send command to stop the car
-
         String msg = "010900";
-
-        // if command not ended with endChar, append endChar
-        char ch = msg.charAt(msg.length() - 1);
-        if(ch!=responseEndChar.charAt(0))
-            msg = msg + responseEndChar;
+        msg = comHan.turnServoOneMiddle();
 
         mConnectedThread.write(msg);
     }
@@ -184,11 +184,7 @@ public class AvtoActivity extends Activity {
         // send command to turn the car right
 
         String msg = "011800";
-
-        // if command not ended with endChar, append endChar
-        char ch = msg.charAt(msg.length() - 1);
-        if(ch!=responseEndChar.charAt(0))
-            msg = msg + responseEndChar;
+        msg = comHan.turnServoOneRight(150);
 
         mConnectedThread.write(msg);
 
@@ -199,11 +195,7 @@ public class AvtoActivity extends Activity {
         // send command to turn the car left
 
         String msg = "010000";
-
-        // if command not ended with endChar, append endChar
-        char ch = msg.charAt(msg.length() - 1);
-        if(ch!=responseEndChar.charAt(0))
-            msg = msg + responseEndChar;
+        msg = comHan.turnServoOneLeft(30);
 
         mConnectedThread.write(msg);
 

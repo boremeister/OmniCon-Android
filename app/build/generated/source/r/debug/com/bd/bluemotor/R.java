@@ -1431,6 +1431,17 @@ containing a value of this type.
     }
     public static final class integer {
         public static final int abc_max_action_buttons=0x7f090000;
+        public static final int dc_max_speed=0x7f090001;
+        public static final int dc_min_speed=0x7f090002;
+        public static final int direction_backward=0x7f090003;
+        public static final int direction_forward=0x7f090004;
+        public static final int motor_dc_1=0x7f090005;
+        public static final int motor_dc_2=0x7f090006;
+        public static final int motor_servo_1=0x7f090007;
+        public static final int motor_servo_2=0x7f090008;
+        public static final int servo_default_angle=0x7f090009;
+        public static final int servo_max_angle=0x7f09000a;
+        public static final int servo_min_angle=0x7f09000b;
     }
     public static final class layout {
         public static final int abc_action_bar_title_item=0x7f030000;
