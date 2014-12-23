@@ -1506,25 +1506,26 @@ containing a value of this type.
         public static final int app_name=0x7f0a0011;
         public static final int button_send=0x7f0a0012;
         public static final int button_sendToBluetooth=0x7f0a0013;
-        public static final int edit_message=0x7f0a0014;
-        public static final int hello_world=0x7f0a0015;
-        public static final int home_image_1=0x7f0a0016;
-        public static final int manual_test=0x7f0a0017;
-        public static final int menu_about=0x7f0a0018;
-        public static final int menu_bt_settings=0x7f0a0019;
-        public static final int menu_drive=0x7f0a001a;
-        public static final int menu_help=0x7f0a001b;
-        public static final int menu_manual=0x7f0a001c;
-        public static final int menu_settings=0x7f0a001d;
-        public static final int title_activity_about=0x7f0a001e;
-        public static final int title_activity_avto=0x7f0a001f;
-        public static final int title_activity_display_message=0x7f0a0020;
-        public static final int title_activity_drive_screen=0x7f0a0021;
-        public static final int title_activity_manual_test=0x7f0a0022;
-        public static final int title_activity_manual_test2=0x7f0a0023;
-        public static final int title_activity_manual_test3=0x7f0a0024;
-        public static final int title_activity_splosno=0x7f0a0025;
-        public static final int title_activity_tank=0x7f0a0026;
+        public static final int command_ending_char=0x7f0a0014;
+        public static final int edit_message=0x7f0a0015;
+        public static final int hello_world=0x7f0a0016;
+        public static final int home_image_1=0x7f0a0017;
+        public static final int manual_test=0x7f0a0018;
+        public static final int menu_about=0x7f0a0019;
+        public static final int menu_bt_settings=0x7f0a001a;
+        public static final int menu_drive=0x7f0a001b;
+        public static final int menu_help=0x7f0a001c;
+        public static final int menu_manual=0x7f0a001d;
+        public static final int menu_settings=0x7f0a001e;
+        public static final int title_activity_about=0x7f0a001f;
+        public static final int title_activity_avto=0x7f0a0020;
+        public static final int title_activity_display_message=0x7f0a0021;
+        public static final int title_activity_drive_screen=0x7f0a0022;
+        public static final int title_activity_manual_test=0x7f0a0023;
+        public static final int title_activity_manual_test2=0x7f0a0024;
+        public static final int title_activity_manual_test3=0x7f0a0025;
+        public static final int title_activity_splosno=0x7f0a0026;
+        public static final int title_activity_tank=0x7f0a0027;
     }
     public static final class style {
         /** 
