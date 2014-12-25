@@ -24,5 +24,7 @@
     <string name="title_activity_drive_screen">Drive</string>
     <string name="title_activity_manual_test2">ManualTest2Activity</string>
     <string name="title_activity_manual_test3">ManualTest3Activity</string>
+    <string name="title_activity_base">BaseActivity</string>
+    <string name="title_activity_help">HelpActivity</string>
 
 </resources>

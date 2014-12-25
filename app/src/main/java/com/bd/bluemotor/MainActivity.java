@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,34 +33,6 @@ public class MainActivity extends Activity {
         editor.putString("DEVICE_NAME", "HC-05");
         editor.commit();
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-    
-    public void showAboutScreen(MenuItem item){
-    	
-    	Intent intent = new Intent(this, AboutActivity.class);
-    	startActivity(intent);
-    }
-    
-    public void goToManualTestMenu(MenuItem item){
-    	Intent intent = new Intent(this, ManualTestActivity.class);
-    	startActivity(intent);
-    }
-    
-    public void goToManualTest(View view){
-    	Intent intent = new Intent(this, ManualTestActivity.class);
-    	startActivity(intent);
-    }
-
-    public void goToManualTest3Menu(MenuItem item){
-        Intent intent = new Intent(this, ManualTest3Activity.class);
-        startActivity(intent);
     }
 
     public void goToAvtoActivity(View view){

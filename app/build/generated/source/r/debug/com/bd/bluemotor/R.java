@@ -1322,9 +1322,10 @@ containing a value of this type.
         public static final int ikona_avto=0x7f020042;
         public static final int ikona_avto_2=0x7f020043;
         public static final int ikona_avto_manjsa=0x7f020044;
-        public static final int splosno_2=0x7f020045;
-        public static final int tank_2=0x7f020046;
-        public static final int test=0x7f020047;
+        public static final int list_selector=0x7f020045;
+        public static final int splosno_2=0x7f020046;
+        public static final int tank_2=0x7f020047;
+        public static final int test=0x7f020048;
     }
     public static final class id {
         public static final int ImageButton01=0x7f080047;
@@ -1343,13 +1344,13 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f08002e;
         public static final int action_mode_bar_stub=0x7f08002d;
         public static final int action_mode_close_button=0x7f080020;
-        public static final int action_settings=0x7f080060;
+        public static final int action_settings=0x7f08005e;
         public static final int activity_chooser_view_content=0x7f080021;
         public static final int always=0x7f080016;
         public static final int beginning=0x7f080013;
-        public static final int buttonConnect=0x7f08004f;
-        public static final int buttonPairedDevices=0x7f080054;
-        public static final int buttonSend=0x7f080058;
+        public static final int buttonConnect=0x7f080056;
+        public static final int buttonPairedDevices=0x7f080058;
+        public static final int buttonSend=0x7f08004d;
         public static final int buttonTurnLeft=0x7f080042;
         public static final int buttonTurnRight=0x7f080044;
         public static final int checkbox=0x7f080029;
@@ -1359,9 +1360,8 @@ containing a value of this type.
         public static final int dialog=0x7f08001b;
         public static final int disableHome=0x7f08000c;
         public static final int dropdown=0x7f08001c;
-        public static final int editTextCommand=0x7f080057;
-        public static final int editTextData=0x7f08005d;
-        public static final int editTextDeviceName=0x7f080052;
+        public static final int editTextCommand=0x7f08004c;
+        public static final int editTextDeviceName=0x7f080059;
         public static final int edit_query=0x7f080033;
         public static final int end=0x7f080014;
         public static final int expand_activities_button=0x7f080022;
@@ -1372,20 +1372,21 @@ containing a value of this type.
         public static final int ifRoom=0x7f080018;
         public static final int image=0x7f080023;
         public static final int imageButtonStop=0x7f080043;
-        public static final int imageView1=0x7f08005f;
+        public static final int imageView1=0x7f08005c;
         public static final int listMode=0x7f080009;
+        public static final int listViewPairedDevices=0x7f08005b;
         public static final int list_item=0x7f080025;
         public static final int ll1=0x7f080041;
         public static final int ll2=0x7f080045;
-        public static final int ll2a=0x7f080050;
-        public static final int ll2b=0x7f080053;
+        public static final int ll2a=0x7f080057;
+        public static final int ll2b=0x7f08005a;
         public static final int ll3=0x7f080049;
-        public static final int ll3a=0x7f080056;
-        public static final int ll3b=0x7f080059;
-        public static final int menu_about=0x7f080064;
-        public static final int menu_bt_settings=0x7f080062;
-        public static final int menu_help=0x7f080061;
-        public static final int menu_manual=0x7f080063;
+        public static final int ll3a=0x7f08004b;
+        public static final int ll3b=0x7f08004e;
+        public static final int menu_about=0x7f080062;
+        public static final int menu_bt_settings=0x7f080060;
+        public static final int menu_help=0x7f08005f;
+        public static final int menu_manual=0x7f080061;
         public static final int middle=0x7f080015;
         public static final int never=0x7f080019;
         public static final int none=0x7f08000e;
@@ -1393,6 +1394,7 @@ containing a value of this type.
         public static final int progress_circular=0x7f080005;
         public static final int progress_horizontal=0x7f080006;
         public static final int radio=0x7f08002b;
+        public static final int rowTextView=0x7f08005d;
         public static final int search_badge=0x7f080035;
         public static final int search_bar=0x7f080034;
         public static final int search_button=0x7f080036;
@@ -1410,19 +1412,16 @@ containing a value of this type.
         public static final int split_action_bar=0x7f080007;
         public static final int submit_area=0x7f08003c;
         public static final int tabMode=0x7f08000b;
-        public static final int textView=0x7f08005e;
         public static final int textView1=0x7f08003f;
         public static final int textView2=0x7f080040;
-        public static final int textViewBluetoothConnectionDelimiter=0x7f08004d;
-        public static final int textViewBluetoothConnectionOff=0x7f08004e;
-        public static final int textViewBluetoothConnectionOn=0x7f08004c;
-        public static final int textViewBluetoothConnectionStatus=0x7f08004b;
+        public static final int textViewBluetoothConnectionDelimiter=0x7f080054;
+        public static final int textViewBluetoothConnectionOff=0x7f080055;
+        public static final int textViewBluetoothConnectionOn=0x7f080053;
+        public static final int textViewBluetoothConnectionStatus=0x7f080052;
         public static final int textViewCarResponse=0x7f080046;
-        public static final int textViewDeviceName=0x7f080051;
-        public static final int textViewPairedDevices=0x7f080055;
-        public static final int textViewRespond=0x7f08005b;
-        public static final int textViewRespondLabel=0x7f08005a;
-        public static final int textViewRespondLength=0x7f08005c;
+        public static final int textViewRespond=0x7f080050;
+        public static final int textViewRespondLabel=0x7f08004f;
+        public static final int textViewRespondLength=0x7f080051;
         public static final int title=0x7f080027;
         public static final int up=0x7f080008;
         public static final int useLogo=0x7f080012;
@@ -1469,21 +1468,22 @@ containing a value of this type.
         public static final int abc_simple_dropdown_hint=0x7f030016;
         public static final int activity_about=0x7f030017;
         public static final int activity_avto=0x7f030018;
-        public static final int activity_main=0x7f030019;
-        public static final int activity_manual_test=0x7f03001a;
-        public static final int activity_manual_test3=0x7f03001b;
-        public static final int activity_splosno=0x7f03001c;
-        public static final int activity_tank=0x7f03001d;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001e;
+        public static final int activity_base=0x7f030019;
+        public static final int activity_help=0x7f03001a;
+        public static final int activity_main=0x7f03001b;
+        public static final int activity_manual_test=0x7f03001c;
+        public static final int activity_splosno=0x7f03001d;
+        public static final int activity_tank=0x7f03001e;
+        public static final int list_row=0x7f03001f;
+        public static final int support_simple_spinner_dropdown_item=0x7f030020;
     }
     public static final class menu {
         public static final int about=0x7f0c0000;
         public static final int avto=0x7f0c0001;
-        public static final int main=0x7f0c0002;
-        public static final int manual_test=0x7f0c0003;
-        public static final int menu_manual_test3=0x7f0c0004;
-        public static final int splosno=0x7f0c0005;
-        public static final int tank=0x7f0c0006;
+        public static final int menu_base=0x7f0c0002;
+        public static final int menu_help=0x7f0c0003;
+        public static final int splosno=0x7f0c0004;
+        public static final int tank=0x7f0c0005;
     }
     public static final class string {
         public static final int abc_action_bar_home_description=0x7f0a0000;
@@ -1519,13 +1519,15 @@ containing a value of this type.
         public static final int menu_settings=0x7f0a001e;
         public static final int title_activity_about=0x7f0a001f;
         public static final int title_activity_avto=0x7f0a0020;
-        public static final int title_activity_display_message=0x7f0a0021;
-        public static final int title_activity_drive_screen=0x7f0a0022;
-        public static final int title_activity_manual_test=0x7f0a0023;
-        public static final int title_activity_manual_test2=0x7f0a0024;
-        public static final int title_activity_manual_test3=0x7f0a0025;
-        public static final int title_activity_splosno=0x7f0a0026;
-        public static final int title_activity_tank=0x7f0a0027;
+        public static final int title_activity_base=0x7f0a0021;
+        public static final int title_activity_display_message=0x7f0a0022;
+        public static final int title_activity_drive_screen=0x7f0a0023;
+        public static final int title_activity_help=0x7f0a0024;
+        public static final int title_activity_manual_test=0x7f0a0025;
+        public static final int title_activity_manual_test2=0x7f0a0026;
+        public static final int title_activity_manual_test3=0x7f0a0027;
+        public static final int title_activity_splosno=0x7f0a0028;
+        public static final int title_activity_tank=0x7f0a0029;
     }
     public static final class style {
         /** 

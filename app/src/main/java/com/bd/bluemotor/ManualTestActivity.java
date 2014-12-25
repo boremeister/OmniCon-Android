@@ -15,9 +15,13 @@ import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,7 +30,7 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.UUID;
 
-public class ManualTestActivity extends Activity {
+public class ManualTestActivity extends BaseActivity {
 
     private BoreToolbox bt;
     private BluetoothHandler bth;
@@ -35,11 +39,13 @@ public class ManualTestActivity extends Activity {
 	Button btnPairedDevices, btnSend;
 	EditText etTargetDeviceName, etCommand;
     TextView tvRespond, tvRespondLength, tvBluetoothConnectionOn, tvBluetoothConnectionOff;
+    ListView lvPairedDevices;
     Handler responseHandler;
     private StringBuilder recDataString = new StringBuilder();
+    private ArrayAdapter<String> listAdapter;
 
     private static UUID DEVICE_UUID;
-    String deviceName, responseStartChar, responseEndChar;
+    String deviceName, responseStartChar, responseEndChar, selectedFromList;
 
     //private static String LOG_TAG = "com.bd.bluemotor.ManualTestActivity";
 
@@ -67,12 +73,28 @@ public class ManualTestActivity extends Activity {
         tvBluetoothConnectionOff = (TextView) findViewById(R.id.textViewBluetoothConnectionOff);
         tvRespond = (TextView) findViewById(R.id.textViewRespond);
         tvRespondLength = (TextView) findViewById(R.id.textViewRespondLength);
+        lvPairedDevices = (ListView) findViewById(R.id.listViewPairedDevices);
         etCommand = (EditText) findViewById(R.id.editTextCommand);
 
         bt = new BoreToolbox(getApplicationContext());
 
         // initialize BluetoothHandler
         bth = new BluetoothHandler(BluetoothAdapter.getDefaultAdapter(), DEVICE_UUID);
+
+        /*
+        * listener for ListView selection
+         */
+        lvPairedDevices.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> myAdapter, View myView, int myItemInt, long mylng) {
+                selectedFromList = (String) (lvPairedDevices.getItemAtPosition(myItemInt));
+
+                // get device's name only
+                selectedFromList = selectedFromList.split(" - ")[0];
+
+                etTargetDeviceName.setText(selectedFromList);
+                bt.print("Device " + selectedFromList + " chosen.");
+            }
+        });
 
         /*
         * handler for receiving data from BT module
@@ -133,10 +155,13 @@ public class ManualTestActivity extends Activity {
     public void onPause(){
         super.onPause();
 
-        try{
-            bth.getSocket().close();
-        }catch (IOException e){
-            // empty
+        if(bth.getSocket()!=null){
+
+            try{
+                bth.getSocket().close();
+            }catch (IOException e){
+                // empty
+            }
         }
     }
 
@@ -150,51 +175,31 @@ public class ManualTestActivity extends Activity {
 		}
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.manual_test, menu);
-		return true;
-	}
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			// This ID represents the Home or Up button. In the case of this
-			// activity, the Up button is shown. Use NavUtils to allow users
-			// to navigate up one level in the application structure. For
-			// more details, see the Navigation pattern on Android Design:
-			//
-			// http://developer.android.com/design/patterns/navigation.html#up-vs-back
-			//
-			NavUtils.navigateUpFromSameTask(this);
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+        MenuItem mi = menu.findItem(R.id.menu_manual);
+        if(mi != null){
+            mi.setEnabled(false);
+        }
 
-	public void	getPairedDevices (View view){
-		
-		TextView tv;
-		tv = (TextView) findViewById(R.id.textViewPairedDevices);
-		String text = "";
+        return true;
+
+    }
+
+    public void	getPairedDevices (View view){
 
         // get paired devices
         ArrayList<String> pairedDevicesList = bth.getPairedDevices();
 
-		if(!pairedDevicesList.isEmpty()){
-			// header text
-			text = "Name - Address\n";
-			// devices
-			for (String device : pairedDevicesList) {
-				text += device.toString();
-			}
-		} else {
-			text = "No paired devices!";
-		}
-		
-		tv.setText(text);
+		if(pairedDevicesList.isEmpty()){
+            pairedDevicesList.add("No paired devices found!");
+        }
+
+        listAdapter = new ArrayAdapter<String>(this, R.layout.list_row, pairedDevicesList);
+
+        lvPairedDevices.setAdapter(listAdapter);
+
 	}
 	
 	public void sendToTarget(View view){
