@@ -8,90 +8,198 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:weightSum="100"
     tools:context=".AvtoActivity" >
 
     <LinearLayout
         android:id="@+id/ll1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="30"
+        android:orientation="vertical"
         android:gravity="center">
 
-        <View android:layout_width="0dp"
+        <LinearLayout
+            android:id="@+id/ll1a"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center">
 
-        <Button
-            android:id="@+id/buttonTurnLeft"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="30sp"
-            android:enabled="false"
-            android:onClick="carRight"
-            android:text="Left" />
+            <View android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
-        <View android:layout_width="0dp"
+            <Button
+                android:id="@+id/buttonTurnLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:enabled="false"
+                android:onClick="carRight"
+                android:text="Left" />
+
+            <View android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/imageButtonStop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/grey"
+                android:contentDescription="@string/home_image_1"
+                android:enabled="false"
+                android:onClick="carStop"
+                android:src="@drawable/btn_stop" />
+
+            <View android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/buttonTurnRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:enabled="false"
+                android:onClick="carLeft"
+                android:text="Right" />
+
+            <View android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll1b"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center">
 
-        <ImageButton
-            android:id="@+id/imageButtonStop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@color/grey"
-            android:contentDescription="@string/home_image_1"
-            android:enabled="false"
-            android:onClick="carStop"
-            android:src="@drawable/btn_stop" />
+            <View android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
-        <View android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
+            <TextView
+                android:id="@+id/textViewCarResponse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:hint="Response message ..." />
 
-        <Button
-            android:id="@+id/buttonTurnRight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="30sp"
-            android:enabled="false"
-            android:onClick="carLeft"
-            android:text="Right" />
+            <View android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
-        <View android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="70"
+        android:weightSum="100"
         android:orientation="horizontal"
         android:gravity="center">
 
-        <View android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
+        <LinearLayout
+            android:id="@+id/ll2a"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="40"
+            android:orientation="vertical"
+            android:gravity="center">
 
-        <TextView
-            android:id="@+id/textViewCarResponse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="22sp"
-            android:hint="Response message ..." />
+            <View android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
-        <View android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
+            <ImageButton
+                android:id="@+id/imageButtonForward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/grey"
+                android:contentDescription="@string/home_image_1"
+                android:enabled="false"
+                android:onClick="carStop"
+                android:src="@drawable/btn_avto_forward" />
+
+            <View android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/imageButtonStop1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/grey"
+                android:contentDescription="@string/home_image_1"
+                android:enabled="false"
+                android:onClick="carStop"
+                android:src="@drawable/btn_avto_stop" />
+
+            <View android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/imageButtonBackward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/grey"
+                android:contentDescription="@string/home_image_1"
+                android:enabled="false"
+                android:onClick="carStop"
+                android:src="@drawable/btn_avto_backward" />
+
+            <View android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll2b"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="60"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <View android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/imageButtonSteering"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/grey"
+                android:contentDescription="@string/home_image_1"
+                android:enabled="false"
+                android:onClick="carStop"
+                android:src="@drawable/btn_avto_steering" />
+
+            <View android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
-
-</LinearLayout>
+    </LinearLayout>

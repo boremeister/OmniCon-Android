@@ -20,7 +20,7 @@
         android:gravity="center">
 
         <LinearLayout
-            android:id="@+id/ll3a"
+            android:id="@+id/ll1a"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Enter command"
-                android:textSize="26sp"
+                android:textSize="22sp"
                 android:textColor="@color/white" >
             </EditText>
 
@@ -47,13 +47,13 @@
 
             <Button
                 android:id="@+id/buttonSend"
+                android:background="@drawable/button_red"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="false"
-                android:textSize="30sp"
-                android:textColor="@color/white"
+                android:text="Send"
                 android:onClick="sendToTarget"
-                android:text="Send" />
+                style="@style/button_text" />
 
             <View android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -62,7 +62,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ll3b"
+            android:id="@+id/ll1b"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -78,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-                android:textSize="26sp"
+                android:textSize="22sp"
                 android:text="Received:" />
 
             <View android:layout_width="0dp"
@@ -90,7 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-                android:textSize="26sp"
+                android:textSize="22sp"
                 android:hint=" ... message" />
 
             <View android:layout_width="0dp"
@@ -102,7 +102,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-                android:textSize="26sp"
+                android:textSize="22sp"
                 android:text="[length]" />
 
             <View android:layout_width="0dp"
@@ -110,13 +110,18 @@
                 android:layout_weight="1" />
 
         </LinearLayout>
+
+        <View android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:background="@color/black" />
+
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll2"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="20"
+        android:layout_weight="15"
         android:orientation="horizontal"
         android:gravity="center">
 
@@ -129,8 +134,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:textSize="30sp"
-            android:text="BT status:" />
+            android:textSize="26sp"
+            android:text="Bluetooth is:" />
 
         <View android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -141,7 +146,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/grey"
-            android:textSize="30sp"
+            android:textSize="26sp"
             android:text="ON" />
 
         <TextView
@@ -149,7 +154,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:textSize="30sp"
+            android:textSize="26sp"
             android:text=" / " />
 
         <TextView
@@ -157,7 +162,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/grey"
-            android:textSize="30sp"
+            android:textSize="26sp"
             android:text="OFF" />
 
         <View android:layout_width="0dp"
@@ -166,12 +171,12 @@
 
         <Button
             android:id="@+id/buttonConnect"
+            android:background="@drawable/button_red"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="30sp"
+            android:text="Check"
             android:onClick="checkBluetooth"
-            android:text="Check" />
+            style="@style/button_text" />
 
         <View android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -183,12 +188,12 @@
         android:id="@+id/ll3"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="40"
+        android:layout_weight="45"
         android:orientation="horizontal"
         android:gravity="center">
 
         <LinearLayout
-            android:id="@+id/ll2a"
+            android:id="@+id/ll3a"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -201,14 +206,13 @@
 
             <Button
                 android:id="@+id/buttonPairedDevices"
+                android:background="@drawable/button_red"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="30sp"
                 android:enabled="false"
+                android:text="Show paired"
                 android:onClick="getPairedDevices"
-                android:text="Show paired" />
-
+                style="@style/button_text" />
 
             <View android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -219,7 +223,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="... device name"
-                android:textSize="26sp"
+                android:textSize="22sp"
                 android:textColor="@color/white" />
 
             <View android:layout_width="0dp"
@@ -229,7 +233,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ll2b"
+            android:id="@+id/ll3b"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
