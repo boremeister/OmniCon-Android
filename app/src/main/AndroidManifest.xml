@@ -91,6 +91,18 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bd.bluemotor.BaseActivity" />
         </activity>
+        <activity
+            android:name="com.bd.bluemotor.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName="com.bd.bluemotor.BaseActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bd.bluemotor.BaseActivity" />
+        </activity>
+        <activity
+            android:name="com.bd.bluemotor.PreferencesActivity"
+            android:label="@string/title_activity_preferences" >
+        </activity>
     </application>
 
 </manifest>

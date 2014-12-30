@@ -28,13 +28,19 @@ public class BaseActivity extends Activity {
         switch(id){
 
             case R.id.menu_manual:
-                goToManualTestMenu(item);
+                goToManualTestMenu();
+                break;
+            case R.id.menu_preferences:
+                showPreferencesScreen();
+                break;
+            case R.id.menu_settings:
+                showSettingsScreen();
                 break;
             case R.id.menu_about:
-                showAboutScreen(item);
+                showAboutScreen();
                 break;
             case R.id.menu_help:
-                showHelpScreen(item);
+                showHelpScreen();
                 break;
             default:
                 return super.onOptionsItemSelected(item);
@@ -44,18 +50,27 @@ public class BaseActivity extends Activity {
 
     }
 
-    public void goToManualTestMenu(MenuItem item){
+    public void goToManualTestMenu(){
         Intent intent = new Intent(this, ManualTestActivity.class);
         startActivity(intent);
     }
 
-    public void showAboutScreen(MenuItem item){
+    public void showPreferencesScreen(){
+        Intent intent = new Intent(this, PreferencesActivity.class);
+        startActivity(intent);
+    }
 
+    public void showSettingsScreen(){
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+    }
+
+    public void showAboutScreen(){
         Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
     }
 
-    public void showHelpScreen(MenuItem item){
+    public void showHelpScreen(){
 
         Intent intent = new Intent(this, HelpActivity.class);
         startActivity(intent);

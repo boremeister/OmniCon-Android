@@ -26,5 +26,19 @@
     <string name="title_activity_manual_test3">ManualTest3Activity</string>
     <string name="title_activity_base">BaseActivity</string>
     <string name="title_activity_help">HelpActivity</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- preferences activity screen -->
+    <string name="label_bt_device_name">Bluetooth Device name</string>
+    <string name="label_command_start_char">Bluetooth Device name</string>
+    <string name="label_command_end_char">Bluetooth Device name</string>
+    <string name="label_device_uuid">Bluetooth Device name</string>
+
+    <!-- default settings values -->
+    <string name="value_bt_default_device_name">HC-05</string>
+    <string name="value_default_command_start_char">~</string>
+    <string name="value_default_command_end_char">#</string>
+    <string name="value_default_device_uuid">00001101-0000-1000-8000-00805F9B34FB</string>
+    <string name="title_activity_preferences">PreferencesActivity</string>
 
 </resources>
