@@ -30,9 +30,9 @@
 
     <!-- preferences activity screen -->
     <string name="label_bt_device_name">Bluetooth Device name</string>
-    <string name="label_command_start_char">Bluetooth Device name</string>
-    <string name="label_command_end_char">Bluetooth Device name</string>
-    <string name="label_device_uuid">Bluetooth Device name</string>
+    <string name="label_device_uuid">Device UUID</string>
+    <string name="label_command_start_char">Command start char</string>
+    <string name="label_command_end_char">Command end char</string>
 
     <!-- default settings values -->
     <string name="value_bt_default_device_name">HC-05</string>

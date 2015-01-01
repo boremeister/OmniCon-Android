@@ -7,6 +7,7 @@
         <EditTextPreference
             android:key="device_name"
             android:title="@string/label_bt_device_name"
+            android:summary="@string/value_bt_default_device_name"
             android:defaultValue="@string/value_bt_default_device_name"
             android:selectAllOnFocus="true"
             android:inputType="text"
@@ -17,6 +18,7 @@
         <EditTextPreference
             android:key="device_uuid"
             android:title="@string/label_device_uuid"
+            android:summary="@string/value_default_device_uuid"
             android:defaultValue="@string/value_default_device_uuid"
             android:selectAllOnFocus="true"
             android:inputType="none"
@@ -31,6 +33,7 @@
         <EditTextPreference
             android:key="command_start_char"
             android:title="@string/label_command_start_char"
+            android:summary="@string/value_default_command_start_char"
             android:defaultValue="@string/value_default_command_start_char"
             android:selectAllOnFocus="true"
             android:inputType="text"
@@ -41,6 +44,7 @@
         <EditTextPreference
             android:key="command_end_char"
             android:title="@string/label_command_end_char"
+            android:summary="@string/value_default_command_end_char"
             android:defaultValue="@string/value_default_command_end_char"
             android:selectAllOnFocus="true"
             android:inputType="text"
@@ -49,9 +53,5 @@
             android:maxLines="1" />
 
     </PreferenceCategory>
-
-
-
-
 
 </PreferenceScreen>
