@@ -33,9 +33,6 @@ public class BaseActivity extends Activity {
             case R.id.menu_preferences:
                 showPreferencesScreen();
                 break;
-            case R.id.menu_settings:
-                showSettingsScreen();
-                break;
             case R.id.menu_about:
                 showAboutScreen();
                 break;
@@ -57,11 +54,6 @@ public class BaseActivity extends Activity {
 
     public void showPreferencesScreen(){
         Intent intent = new Intent(this, PreferencesActivity.class);
-        startActivity(intent);
-    }
-
-    public void showSettingsScreen(){
-        Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
 

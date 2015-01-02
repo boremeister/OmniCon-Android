@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-
     <PreferenceCategory android:title="General" >
 
         <EditTextPreference
@@ -51,6 +50,26 @@
             android:capitalize="none"
             android:singleLine="true"
             android:maxLines="1" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Servo motors" >
+
+        <ListPreference
+            android:title="@string/label_servo_1_orientation"
+            android:summary="Choose turning direction of Servo motor 1"
+            android:key="servo_orientation_1"
+            android:defaultValue="@string/value_default_servo_1_orientation"
+            android:entries="@array/orientation"
+            android:entryValues="@array/orientation_values" />
+
+        <ListPreference
+            android:title="@string/label_servo_2_orientation"
+            android:summary="Choose turning direction of Servo motor 2"
+            android:key="servo_orientation_2"
+            android:defaultValue="@string/value_default_servo_2_orientation"
+            android:entries="@array/orientation"
+            android:entryValues="@array/orientation_values" />
 
     </PreferenceCategory>
 

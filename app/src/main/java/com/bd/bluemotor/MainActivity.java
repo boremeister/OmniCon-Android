@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,25 +15,14 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+// TODO: create handler (class) for shared preferences
+
 public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // save some data into settings
-        SharedPreferences settings = getSharedPreferences("OMNICON_PREF", MODE_PRIVATE);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putString("UUID", "00001101-0000-1000-8000-00805F9B34FB");
-        editor.commit();
-        editor.putString("RESPONSE_STARTCHAR", "~");
-        editor.commit();
-        editor.putString("RESPONSE_ENDCHAR", "#");
-        editor.commit();
-        editor.putString("DEVICE_NAME", "HC-05");
-        editor.commit();
-
     }
 
     public void goToAvtoActivity(View view){

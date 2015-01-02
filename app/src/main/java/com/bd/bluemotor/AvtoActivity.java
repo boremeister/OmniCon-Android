@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.os.Handler;
 import android.os.Message;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
@@ -37,7 +38,7 @@ public class AvtoActivity extends Activity {
     private StringBuilder recDataString = new StringBuilder();
 
     private static UUID DEVICE_UUID;
-    String deviceName, responseStartChar, responseEndChar;
+    private String deviceName, uuid, responseStartChar, responseEndChar, selectedFromList;
     TextView tvResponse;
     Button btnTurnLeft, btnTurnRight;
     ImageButton imgBtnStop;
@@ -49,13 +50,13 @@ public class AvtoActivity extends Activity {
 		// Show the Up button in the action bar.
 		setupActionBar();
 
-        // read values from settings file
-        SharedPreferences settings = getSharedPreferences("OMNICON_PREF", 0);
-        String uuid = settings.getString("UUID", null);
+        // read values from preferences
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        deviceName = prefs.getString("device_name","@string/value_bt_default_device_name");
+        uuid = prefs.getString("device_uuid", "@string/value_default_device_uuid");
+        responseStartChar = prefs.getString("command_start_char", "@string/value_default_command_start_char");
+        responseEndChar = prefs.getString("command_end_char", "@string/value_default_command_end_char");
         DEVICE_UUID = UUID.fromString(uuid);
-        deviceName = settings.getString("DEVICE_NAME", null);
-        responseStartChar = settings.getString("RESPONSE_STARTCHAR", null);
-        responseEndChar = settings.getString("RESPONSE_ENDCHAR", null);
 
         // UI fields
         tvResponse = (TextView) findViewById(R.id.textViewCarResponse);
@@ -79,7 +80,7 @@ public class AvtoActivity extends Activity {
                 String myMsg = bundle.getString("bt_response");
 
                 recDataString.append(myMsg);                                        //keep appending to string until end char
-                int endOfLineIndex = recDataString.indexOf("#");                    // determine the end-of-line
+                int endOfLineIndex = recDataString.indexOf(responseEndChar);                    // determine the end-of-line
                 if (endOfLineIndex > 0) {                                           // make sure there data before ~
                     String dataInPrint = recDataString.substring(1, endOfLineIndex);    // extract string (without start char)
                     tvResponse.setText(dataInPrint);
@@ -145,8 +146,6 @@ public class AvtoActivity extends Activity {
 	}
 
     public void carMiddle(View view){
-
-        // TODO - prepare command list/xml/table - add instruction translation into new 'values' (../res/values/instructions.xml) folder
 
         // send command to stop the car
         String msg = "010900";
