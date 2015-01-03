@@ -150,7 +150,7 @@ public class PreferencesActivity extends PreferenceActivity implements SharedPre
 
         switch(id){
 
-            case R.id.menu_manual:
+            case R.id.menu_manual_control:
                 goToManualTestMenu();
                 break;
             case R.id.menu_preferences:

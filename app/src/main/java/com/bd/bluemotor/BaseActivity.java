@@ -27,7 +27,7 @@ public class BaseActivity extends Activity {
 
         switch(id){
 
-            case R.id.menu_manual:
+            case R.id.menu_manual_control:
                 goToManualTestMenu();
                 break;
             case R.id.menu_preferences:

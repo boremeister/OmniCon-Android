@@ -36,7 +36,7 @@
         </activity>
         <activity
             android:name="com.bd.bluemotor.ManualTestActivity"
-            android:label="@string/title_activity_manual_test"
+            android:label="@string/title_activity_manual_control"
             android:parentActivityName="com.bd.bluemotor.MainActivity"
             android:screenOrientation="portrait" >
             <meta-data
@@ -86,14 +86,6 @@
         <activity
             android:name="com.bd.bluemotor.HelpActivity"
             android:label="@string/title_activity_help"
-            android:parentActivityName="com.bd.bluemotor.BaseActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bd.bluemotor.BaseActivity" />
-        </activity>
-        <activity
-            android:name="com.bd.bluemotor.SettingsActivity"
-            android:label="@string/title_activity_settings"
             android:parentActivityName="com.bd.bluemotor.BaseActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

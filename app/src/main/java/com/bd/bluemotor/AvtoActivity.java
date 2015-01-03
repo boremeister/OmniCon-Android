@@ -4,17 +4,13 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothSocket;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.app.Activity;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
 import android.os.Build;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -25,12 +21,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.UUID;
 
-public class AvtoActivity extends Activity {
+public class AvtoActivity extends BaseActivity {
 
+    private static final String DEBUG_TAG = "OmniCon.AvtoActivity";
     private BoreToolbox bt;
     private BluetoothHandler bth;
     private CommandHandler comHan;
-    private Resources res = getResources();
 
     private Handler responseHandler;
     private ConnectedThread mConnectedThread;
@@ -45,15 +41,15 @@ public class AvtoActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_avto);
 		// Show the Up button in the action bar.
 		setupActionBar();
 
         // initialize
-        bt = new BoreToolbox(getApplicationContext());
-        comHan = new CommandHandler(res);
-        bth = new BluetoothHandler(BluetoothAdapter.getDefaultAdapter(), DEVICE_UUID);
+        bt = new BoreToolbox(this);
+        comHan = new CommandHandler(this);
 
         // read values from preferences
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -64,6 +60,10 @@ public class AvtoActivity extends Activity {
         servo1orientation = prefs.getString("servo_orientation_1", bt.getStringResourceByName("value_default_servo_1_orientation"));
         servo2orientation = prefs.getString("servo_orientation_2", bt.getStringResourceByName("value_default_servo_2_orientation"));
         DEVICE_UUID = UUID.fromString(uuid);
+
+        Log.i(DEBUG_TAG, "Shared preferences read.");
+
+        bth = new BluetoothHandler(BluetoothAdapter.getDefaultAdapter(), DEVICE_UUID);
 
         // UI fields
         tvResponse = (TextView) findViewById(R.id.textViewCarResponse);

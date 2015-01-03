@@ -33,6 +33,8 @@ import java.util.UUID;
 
 public class ManualTestActivity extends BaseActivity {
 
+    private static final String DEBUG_TAG = "OmniCon.ManuaTestActivity";
+
     private BoreToolbox bt;
     private BluetoothHandler bth;
     private ConnectedThread mConnectedThread;
@@ -48,8 +50,6 @@ public class ManualTestActivity extends BaseActivity {
     private static UUID DEVICE_UUID;
     private String deviceName, uuid, responseStartChar, responseEndChar, selectedFromList, servo1orientation, servo2orientation;
 
-    //private static String LOG_TAG = "com.bd.bluemotor.ManualTestActivity";
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -57,7 +57,7 @@ public class ManualTestActivity extends BaseActivity {
 		// Show the Up button in the action bar.
 		setupActionBar();
 
-        bt = new BoreToolbox(getApplicationContext());
+        bt = new BoreToolbox(this);
 
         // read values from preferences
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -181,7 +181,7 @@ public class ManualTestActivity extends BaseActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
 
-        MenuItem mi = menu.findItem(R.id.menu_manual);
+        MenuItem mi = menu.findItem(R.id.menu_manual_control);
         if(mi != null){
             mi.setEnabled(false);
         }

@@ -11,13 +11,4 @@
     <integer name="dc_max_speed">100</integer>
     <integer name="direction_forward">1</integer>
     <integer name="direction_backward">0</integer>
-
-    <!-- default settings values -->
-    <string name="value_bt_default_device_name">HC-05</string>
-    <string name="value_default_command_start_char">~</string>
-    <string name="value_default_command_end_char">#</string>
-    <string name="value_default_device_uuid">00001101-0000-1000-8000-00805F9B34FB</string>
-    <string name="value_default_servo_1_orientation">0</string>
-    <string name="value_default_servo_2_orientation">0</string>
-
 </resources>

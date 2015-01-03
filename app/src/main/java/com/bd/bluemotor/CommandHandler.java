@@ -1,8 +1,9 @@
 package com.bd.bluemotor;
 
-import android.content.res.Resources;
+import android.content.Context;
+import android.content.ContextWrapper;
 
-public class CommandHandler {
+public class CommandHandler extends ContextWrapper {
 
     private static int motor_servo_1 = 0;
     private static int motor_servo_2 = 0;
@@ -19,27 +20,29 @@ public class CommandHandler {
     private static String command = "";
 
     // constructor
-    public CommandHandler(Resources res){
+    public CommandHandler(Context base){
 
-        motor_servo_1 = res.getInteger(R.integer.motor_servo_1);
-        motor_servo_2 = res.getInteger(R.integer.motor_servo_2);
-        motor_dc_1 = res.getInteger(R.integer.motor_dc_1);
-        motor_dc_2 = res.getInteger(R.integer.motor_dc_2);
-        servo_min_angle = res.getInteger(R.integer.servo_min_angle);
-        servo_default_angle = res.getInteger(R.integer.servo_default_angle);
-        servo_max_angle = res.getInteger(R.integer.servo_max_angle);
-        dc_min_speed = res.getInteger(R.integer.dc_min_speed);
-        dc_max_speed = res.getInteger(R.integer.dc_max_speed);
-        direction_forward = res.getInteger(R.integer.direction_forward);
-        direction_backward = res.getInteger(R.integer.direction_backward);
-        command_ending_char = res.getString(R.string.value_default_command_end_char);
+        super(base);
+
+        motor_servo_1 = getResources().getInteger(R.integer.motor_servo_1);
+        motor_servo_2 = getResources().getInteger(R.integer.motor_servo_2);
+        motor_dc_1 = getResources().getInteger(R.integer.motor_dc_1);
+        motor_dc_2 = getResources().getInteger(R.integer.motor_dc_2);
+        servo_min_angle = getResources().getInteger(R.integer.servo_min_angle);
+        servo_default_angle = getResources().getInteger(R.integer.servo_default_angle);
+        servo_max_angle = getResources().getInteger(R.integer.servo_max_angle);
+        dc_min_speed = getResources().getInteger(R.integer.dc_min_speed);
+        dc_max_speed = getResources().getInteger(R.integer.dc_max_speed);
+        direction_forward = getResources().getInteger(R.integer.direction_forward);
+        direction_backward = getResources().getInteger(R.integer.direction_backward);
+        command_ending_char = getResources().getString(R.string.value_default_command_end_char);
     }
 
     /*
     * getters
     * */
 
-     public static int getMotor_servo_1() {
+    public static int getMotor_servo_1() {
         return motor_servo_1;
     }
 

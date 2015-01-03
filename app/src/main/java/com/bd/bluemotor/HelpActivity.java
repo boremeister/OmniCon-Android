@@ -14,4 +14,15 @@ public class HelpActivity extends BaseActivity {
         setContentView(R.layout.activity_help);
     }
 
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+
+        MenuItem mi = menu.findItem(R.id.menu_help);
+        if(mi != null){
+            mi.setEnabled(false);
+        }
+
+        return true;
+    }
+
 }
