@@ -32,7 +32,7 @@ public class CommandHandler {
         dc_max_speed = res.getInteger(R.integer.dc_max_speed);
         direction_forward = res.getInteger(R.integer.direction_forward);
         direction_backward = res.getInteger(R.integer.direction_backward);
-        command_ending_char = res.getString(R.string.command_ending_char);
+        command_ending_char = res.getString(R.string.value_default_command_end_char);
     }
 
     /*

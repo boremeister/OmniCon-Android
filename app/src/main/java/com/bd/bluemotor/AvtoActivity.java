@@ -38,7 +38,7 @@ public class AvtoActivity extends Activity {
     private StringBuilder recDataString = new StringBuilder();
 
     private static UUID DEVICE_UUID;
-    private String deviceName, uuid, responseStartChar, responseEndChar, selectedFromList;
+    private String deviceName, uuid, responseStartChar, responseEndChar, selectedFromList, servo1orientation, servo2orientation;
     TextView tvResponse;
     Button btnTurnLeft, btnTurnRight;
     ImageButton imgBtnStop;
@@ -50,12 +50,19 @@ public class AvtoActivity extends Activity {
 		// Show the Up button in the action bar.
 		setupActionBar();
 
+        // initialize
+        bt = new BoreToolbox(getApplicationContext());
+        comHan = new CommandHandler(res);
+        bth = new BluetoothHandler(BluetoothAdapter.getDefaultAdapter(), DEVICE_UUID);
+
         // read values from preferences
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        deviceName = prefs.getString("device_name","@string/value_bt_default_device_name");
-        uuid = prefs.getString("device_uuid", "@string/value_default_device_uuid");
-        responseStartChar = prefs.getString("command_start_char", "@string/value_default_command_start_char");
-        responseEndChar = prefs.getString("command_end_char", "@string/value_default_command_end_char");
+        deviceName = prefs.getString("device_name", bt.getStringResourceByName("value_bt_default_device_name"));
+        uuid = prefs.getString("device_uuid", bt.getStringResourceByName("value_default_device_uuid"));
+        responseStartChar = prefs.getString("command_start_char", bt.getStringResourceByName("value_default_command_start_char"));
+        responseEndChar = prefs.getString("command_end_char", bt.getStringResourceByName("value_default_command_end_char"));
+        servo1orientation = prefs.getString("servo_orientation_1", bt.getStringResourceByName("value_default_servo_1_orientation"));
+        servo2orientation = prefs.getString("servo_orientation_2", bt.getStringResourceByName("value_default_servo_2_orientation"));
         DEVICE_UUID = UUID.fromString(uuid);
 
         // UI fields
@@ -63,11 +70,6 @@ public class AvtoActivity extends Activity {
         btnTurnLeft = (Button) findViewById(R.id.buttonTurnLeft);
         btnTurnRight = (Button) findViewById(R.id.buttonTurnRight);
         imgBtnStop = (ImageButton) findViewById(R.id.imageButtonStop);
-
-        bt = new BoreToolbox(getApplicationContext());
-        comHan = new CommandHandler(res);
-        // initialize BluetoothHandler
-        bth = new BluetoothHandler(BluetoothAdapter.getDefaultAdapter(), DEVICE_UUID);
 
         /*
         * handler for receiving data from BT module

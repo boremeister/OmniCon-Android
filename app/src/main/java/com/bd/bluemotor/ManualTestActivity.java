@@ -57,14 +57,16 @@ public class ManualTestActivity extends BaseActivity {
 		// Show the Up button in the action bar.
 		setupActionBar();
 
+        bt = new BoreToolbox(getApplicationContext());
+
         // read values from preferences
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        deviceName = prefs.getString("device_name","@string/value_bt_default_device_name");
-        uuid = prefs.getString("device_uuid", "@string/value_default_device_uuid");
-        responseStartChar = prefs.getString("command_start_char", "@string/value_default_command_start_char");
-        responseEndChar = prefs.getString("command_end_char", "@string/value_default_command_end_char");
-        servo1orientation = prefs.getString("servo_orientation_1", "0");
-        servo2orientation = prefs.getString("servo_orientation_2", "0");
+        deviceName = prefs.getString("device_name", bt.getStringResourceByName("value_bt_default_device_name"));
+        uuid = prefs.getString("device_uuid", bt.getStringResourceByName("value_default_device_uuid"));
+        responseStartChar = prefs.getString("command_start_char", bt.getStringResourceByName("value_default_command_start_char"));
+        responseEndChar = prefs.getString("command_end_char", bt.getStringResourceByName("value_default_command_end_char"));
+        servo1orientation = prefs.getString("servo_orientation_1", bt.getStringResourceByName("value_default_servo_1_orientation"));
+        servo2orientation = prefs.getString("servo_orientation_2", bt.getStringResourceByName("value_default_servo_2_orientation"));
         DEVICE_UUID = UUID.fromString(uuid);
 
         // UI fields
@@ -78,8 +80,6 @@ public class ManualTestActivity extends BaseActivity {
         tvRespondLength = (TextView) findViewById(R.id.textViewRespondLength);
         lvPairedDevices = (ListView) findViewById(R.id.listViewPairedDevices);
         etCommand = (EditText) findViewById(R.id.editTextCommand);
-
-        bt = new BoreToolbox(getApplicationContext());
 
         // initialize BluetoothHandler
         bth = new BluetoothHandler(BluetoothAdapter.getDefaultAdapter(), DEVICE_UUID);
