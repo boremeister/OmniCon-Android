@@ -101,13 +101,14 @@
                 android:layout_weight="1" />
 
         </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll2"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="70"
+        android:layout_weight="50"
         android:weightSum="100"
         android:orientation="horizontal"
         android:gravity="center">
@@ -175,7 +176,7 @@
             android:id="@+id/ll2b"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_weight="60"
+            android:layout_weight="40"
             android:orientation="horizontal"
             android:gravity="center">
 
@@ -197,6 +198,73 @@
             <View android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll3"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="20"
+        android:weightSum="100"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <LinearLayout
+            android:id="@+id/ll3a"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="25"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:text="[progress]"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/textViewProgress"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textColor="@color/white">
+            </TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll3b"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="50"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <SeekBar
+                android:id="@+id/seekBarLed"
+                android:max="10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+            </SeekBar>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll3c"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="25"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:text="[action]"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/textViewAction"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/textViewProgress"
+                android:textColor="@color/white" >
+            </TextView>
 
         </LinearLayout>
 

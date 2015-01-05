@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -38,6 +39,11 @@ public class AvtoActivity extends BaseActivity {
     TextView tvResponse;
     Button btnTurnLeft, btnTurnRight;
     ImageButton imgBtnStop;
+
+    /* SEEK BAR TEST */
+    private SeekBar sbLeds;
+    private TextView tvProgress, tvAction;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +103,28 @@ public class AvtoActivity extends BaseActivity {
 
         // check bluetooth status
         checkBluetooth();
+
+        /* SEEK BAR TEST */
+        sbLeds = (SeekBar) findViewById(R.id.seekBarLed);
+        tvProgress = (TextView) findViewById(R.id.textViewProgress);
+        tvAction = (TextView) findViewById(R.id.textViewAction);
+
+        sbLeds.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
+                tvProgress.setText("Value: " +  progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                tvAction.setText("sliding");
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                tvAction.setText("stop");
+            }
+        });
 
 	}
 
