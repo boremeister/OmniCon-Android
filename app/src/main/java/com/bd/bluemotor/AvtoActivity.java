@@ -44,7 +44,6 @@ public class AvtoActivity extends BaseActivity {
     private SeekBar sbLeds;
     private TextView tvProgress, tvAction;
 
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -109,22 +108,7 @@ public class AvtoActivity extends BaseActivity {
         tvProgress = (TextView) findViewById(R.id.textViewProgress);
         tvAction = (TextView) findViewById(R.id.textViewAction);
 
-        sbLeds.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
-                tvProgress.setText("Value: " +  progress);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-                tvAction.setText("sliding");
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                tvAction.setText("stop");
-            }
-        });
+        sbLeds.setOnSeekBarChangeListener(SeekBarLedsTest);
 
 	}
 
@@ -187,7 +171,6 @@ public class AvtoActivity extends BaseActivity {
     public void carRight(View view){
 
         // send command to turn the car right
-
         String msg = "011800";
         msg = comHan.turnServoOneRight(150);
 
@@ -198,7 +181,6 @@ public class AvtoActivity extends BaseActivity {
     public void carLeft(View view){
 
         // send command to turn the car left
-
         String msg = "010000";
         msg = comHan.turnServoOneLeft(30);
 
@@ -294,4 +276,50 @@ public class AvtoActivity extends BaseActivity {
         }
     }
 
+    /**
+     * seek bar leds test
+     */
+    SeekBar.OnSeekBarChangeListener SeekBarLedsTest = new SeekBar.OnSeekBarChangeListener() {
+
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
+            tvProgress.setText("Value: " +  progress);
+
+            // LED test
+            String msg = "000000#";
+
+            // prepare test command
+            if (progress == 2) {
+                msg = "100000#";
+                Log.i(DEBUG_TAG, "Sending command 100000");
+            }
+            if (progress == 3) {
+                msg = "010000#";
+                Log.i(DEBUG_TAG, "Sending command 010000");
+            }
+            if (progress == 4) {
+                msg = "001000#";
+                Log.i(DEBUG_TAG, "Sending command 001000");
+            }
+            if (progress == 5) {
+                msg = "000100#";
+                Log.i(DEBUG_TAG, "Sending command 000100");
+            }
+
+            // send test command
+            mConnectedThread.write(msg);
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+            tvAction.setText("sliding");
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+            tvAction.setText("stop");
+
+        }
+    };
 }
+
