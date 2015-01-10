@@ -43,6 +43,7 @@ public class AvtoActivity extends BaseActivity {
     /* SEEK BAR TEST */
     private SeekBar sbLeds;
     private TextView tvProgress, tvAction;
+    private String oldCommand = "";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -285,29 +286,36 @@ public class AvtoActivity extends BaseActivity {
         public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
             tvProgress.setText("Value: " +  progress);
 
-            // LED test
-            String msg = "000000#";
+                // LED test
+                String msg = "000000#";
 
-            // prepare test command
-            if (progress == 2) {
-                msg = "100000#";
-                Log.i(DEBUG_TAG, "Sending command 100000");
-            }
-            if (progress == 3) {
-                msg = "010000#";
-                Log.i(DEBUG_TAG, "Sending command 010000");
-            }
-            if (progress == 4) {
-                msg = "001000#";
-                Log.i(DEBUG_TAG, "Sending command 001000");
-            }
-            if (progress == 5) {
-                msg = "000100#";
-                Log.i(DEBUG_TAG, "Sending command 000100");
-            }
+                // prepare test command
+                if (progress < 25) {
+                    msg = "10000#";
+                    //msg = "01000#";
+                } else if (progress < 50) {
+                    msg = "01000#";
+                    //msg = "01060#";
+                } else if (progress < 75) {
+                    msg = "00100#";
+                    //msg = "01120#";
+                } else {
+                    msg = "00010#";
+                    //msg = "01180#";
 
-            // send test command
-            mConnectedThread.write(msg);
+                }
+
+                // send new command only if old and new not equal
+                if(!msg.equals(oldCommand)){
+
+                    oldCommand = msg;
+
+                    Log.i(DEBUG_TAG, "Sending command " + msg);
+
+                    // send test command
+                    mConnectedThread.write(msg);
+
+                }
         }
 
         @Override

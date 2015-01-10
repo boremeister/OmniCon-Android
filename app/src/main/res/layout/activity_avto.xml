@@ -241,7 +241,9 @@
 
             <SeekBar
                 android:id="@+id/seekBarLed"
-                android:max="10"
+                android:max="100"
+                android:progress="50"
+                android:progressDrawable="@android:color/transparent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
             </SeekBar>
