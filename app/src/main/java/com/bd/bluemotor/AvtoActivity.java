@@ -302,7 +302,6 @@ public class AvtoActivity extends BaseActivity {
                 } else {
                     msg = "00010#";
                     //msg = "01180#";
-
                 }
 
                 // send new command only if old and new not equal
