@@ -1336,13 +1336,15 @@ containing a value of this type.
         public static final int ikona_avto_2=0x7f020048;
         public static final int ikona_avto_manjsa=0x7f020049;
         public static final int list_selector=0x7f02004a;
-        public static final int seekbar_progress_cyan=0x7f02004b;
-        public static final int seekbar_thumb=0x7f02004c;
-        public static final int seekbar_thumb_default=0x7f02004d;
-        public static final int seekbar_thumb_pressed=0x7f02004e;
-        public static final int splosno_2=0x7f02004f;
-        public static final int tank_2=0x7f020050;
-        public static final int test=0x7f020051;
+        public static final int seekbar_background=0x7f02004b;
+        public static final int seekbar_progress=0x7f02004c;
+        public static final int seekbar_progress_cyan=0x7f02004d;
+        public static final int seekbar_thumb=0x7f02004e;
+        public static final int seekbar_thumb_default=0x7f02004f;
+        public static final int seekbar_thumb_pressed=0x7f020050;
+        public static final int splosno_2=0x7f020051;
+        public static final int tank_2=0x7f020052;
+        public static final int test=0x7f020053;
     }
     public static final class id {
         public static final int ImageButton01=0x7f0a0056;
