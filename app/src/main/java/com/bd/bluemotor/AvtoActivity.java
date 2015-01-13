@@ -37,11 +37,11 @@ public class AvtoActivity extends BaseActivity {
     private static UUID DEVICE_UUID;
     private String deviceName, uuid, responseStartChar, responseEndChar, selectedFromList, servo1orientation, servo2orientation;
     TextView tvResponse;
-    Button btnTurnLeft, btnTurnRight;
     ImageButton imgBtnStop;
 
     /* SEEK BAR TEST */
     private SeekBar sbLeds;
+    private VerticalSeekBar sbVertical;
     private TextView tvProgress, tvAction;
     private String oldCommand = "";
 
@@ -73,8 +73,6 @@ public class AvtoActivity extends BaseActivity {
 
         // UI fields
         tvResponse = (TextView) findViewById(R.id.textViewCarResponse);
-        btnTurnLeft = (Button) findViewById(R.id.buttonTurnLeft);
-        btnTurnRight = (Button) findViewById(R.id.buttonTurnRight);
         imgBtnStop = (ImageButton) findViewById(R.id.imageButtonStop);
 
         /*
@@ -106,10 +104,12 @@ public class AvtoActivity extends BaseActivity {
 
         /* SEEK BAR TEST */
         sbLeds = (SeekBar) findViewById(R.id.seekBarLed);
+        sbVertical = (VerticalSeekBar) findViewById(R.id.verticalSeekbar);
         tvProgress = (TextView) findViewById(R.id.textViewProgress);
         tvAction = (TextView) findViewById(R.id.textViewAction);
 
         sbLeds.setOnSeekBarChangeListener(SeekBarLedsTest);
+        sbVertical.setOnSeekBarChangeListener(VerticalSeekBarListener);
 
 	}
 
@@ -189,26 +189,39 @@ public class AvtoActivity extends BaseActivity {
 
     }
 
+    public void carStop(View view){
+
+        sbLeds.setProgress(50);
+        sbVertical.setProgress(50);
+
+        // send command to stop the car
+        String msg = "10000#";
+        //msg = comHan.turnServoOneLeft(30);
+
+        mConnectedThread.write(msg);
+
+    }
+
     public void checkBluetooth(){
 
         // check if BT supported and enabled
         if(bth.isBluetoothSupported()){
             if(bth.isBluetoothEnabled()){
                 // BT supported and enabled
-                btnTurnLeft.setEnabled(true);
-                btnTurnRight.setEnabled(true);
                 imgBtnStop.setEnabled(true);
+                //sbLeds.setEnabled(true);
+                //sbVertical.setEnabled(true);
             } else {
                 // Bluetooth NOT enabled
-                btnTurnLeft.setEnabled(false);
-                btnTurnRight.setEnabled(false);
                 imgBtnStop.setEnabled(false);
+                //sbLeds.setEnabled(false);
+                //sbVertical.setEnabled(false);
             }
         } else {
             bt.print("Device does NOT support Bluetooth!");
-            btnTurnLeft.setEnabled(false);
-            btnTurnRight.setEnabled(false);
             imgBtnStop.setEnabled(false);
+            //sbLeds.setEnabled(false);
+            //sbVertical.setEnabled(false);
         }
     }
 
@@ -315,6 +328,55 @@ public class AvtoActivity extends BaseActivity {
                     mConnectedThread.write(msg);
 
                 }
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+            tvAction.setText("sliding");
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+            tvAction.setText("stop");
+
+        }
+    };
+
+    VerticalSeekBar.OnSeekBarChangeListener VerticalSeekBarListener = new VerticalSeekBar.OnSeekBarChangeListener() {
+
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
+            tvProgress.setText("Value: " +  progress);
+
+            // LED test
+            String msg = "000000#";
+
+            // prepare test command
+            if (progress < 25) {
+                msg = "10000#";
+                //msg = "01000#";
+            } else if (progress < 50) {
+                msg = "01000#";
+                //msg = "01060#";
+            } else if (progress < 75) {
+                msg = "00100#";
+                //msg = "01120#";
+            } else {
+                msg = "00010#";
+                //msg = "01180#";
+            }
+
+            // send new command only if old and new not equal
+            if(!msg.equals(oldCommand)){
+
+                oldCommand = msg;
+
+                Log.i(DEBUG_TAG, "Sending command " + msg);
+
+                // send test command
+                mConnectedThread.write(msg);
+
+            }
         }
 
         @Override
