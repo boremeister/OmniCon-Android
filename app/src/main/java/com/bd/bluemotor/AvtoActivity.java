@@ -86,7 +86,7 @@ public class AvtoActivity extends BaseActivity {
                 String myMsg = bundle.getString("bt_response");
 
                 recDataString.append(myMsg);                                        //keep appending to string until end char
-                int endOfLineIndex = recDataString.indexOf(responseEndChar);                    // determine the end-of-line
+                int endOfLineIndex = recDataString.indexOf(responseEndChar);        // determine the end-of-line
                 if (endOfLineIndex > 0) {                                           // make sure there data before ~
                     String dataInPrint = recDataString.substring(1, endOfLineIndex);    // extract string (without start char)
                     tvResponse.setText(dataInPrint);
@@ -302,6 +302,7 @@ public class AvtoActivity extends BaseActivity {
                 // LED test
                 String msg = "000000#";
 
+                /*
                 // prepare test command
                 if (progress < 25) {
                     msg = "10000#";
@@ -316,6 +317,69 @@ public class AvtoActivity extends BaseActivity {
                     msg = "00010#";
                     //msg = "01180#";
                 }
+                */
+
+                if (progress < 10) {
+                    msg = oldCommand;
+                    //msg = "01000#";
+                } else if (progress < 20) {
+                    msg = oldCommand;
+                    //msg = "01060#";
+                } else if (progress < 30) {
+                    msg = oldCommand;
+                    //msg = "01120#";
+                } else if (progress < 40) {
+                    msg = "01030#";
+                    //msg = "01180#";
+                } else if (progress < 50) {
+                    msg = "01040#";
+                    //msg = "01000#";
+                } else if (progress < 60) {
+                    msg = "01050#";
+                    //msg = "01060#";
+                } else if (progress < 70) {
+                    msg = "01060#";
+                    //msg = "01120#";
+                } else if (progress < 80) {
+                    msg = "01070#";
+                    //msg = "01180#";
+                } else if (progress < 90) {
+                    msg = "01080#";
+                    //msg = "01000#";
+                } else if (progress < 100) {
+                    msg = "01090#";
+                    //msg = "01060#";
+                } else if (progress < 110) {
+                    msg = "01100#";
+                    //msg = "01120#";
+                } else if (progress < 120) {
+                    msg = "01110#";
+                    //msg = "01060#";
+                } else if (progress < 130) {
+                    msg = "01120#";
+                    //msg = "01120#";
+                } else if (progress < 140) {
+                    msg = "01130#";
+                    //msg = "01180#";
+                } else if (progress < 150) {
+                    msg = "01140#";
+                    //msg = "01000#";
+                } else if (progress < 160) {
+                    msg = "01150#";
+                    //msg = "01060#";
+                } else if (progress < 170) {
+                    msg = "01160#";
+                    //msg = "01120#";
+                } else{
+                    msg = oldCommand;
+                }
+
+                // test 2
+                /*if(progress<100){
+                    msg = "010" + Integer.toString(progress) + "#";
+                }else{
+                    msg = "01" + Integer.toString(progress) + "#";
+                }*/
 
                 // send new command only if old and new not equal
                 if(!msg.equals(oldCommand)){
