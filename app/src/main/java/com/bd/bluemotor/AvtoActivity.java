@@ -37,7 +37,6 @@ public class AvtoActivity extends BaseActivity {
     private static UUID DEVICE_UUID;
     private String deviceName, uuid, responseStartChar, responseEndChar, selectedFromList, servo1orientation, servo2orientation;
     TextView tvResponse;
-    ImageButton imgBtnStop;
 
     /* SEEK BAR TEST */
     private SeekBar sbLeds;
@@ -73,7 +72,6 @@ public class AvtoActivity extends BaseActivity {
 
         // UI fields
         tvResponse = (TextView) findViewById(R.id.textViewCarResponse);
-        imgBtnStop = (ImageButton) findViewById(R.id.imageButtonStop);
 
         /*
         * handler for receiving data from BT module
@@ -189,6 +187,7 @@ public class AvtoActivity extends BaseActivity {
 
     }
 
+    /*
     public void carStop(View view){
 
         sbLeds.setProgress(50);
@@ -201,6 +200,7 @@ public class AvtoActivity extends BaseActivity {
         mConnectedThread.write(msg);
 
     }
+    */
 
     public void checkBluetooth(){
 
@@ -208,18 +208,15 @@ public class AvtoActivity extends BaseActivity {
         if(bth.isBluetoothSupported()){
             if(bth.isBluetoothEnabled()){
                 // BT supported and enabled
-                imgBtnStop.setEnabled(true);
                 //sbLeds.setEnabled(true);
                 //sbVertical.setEnabled(true);
             } else {
                 // Bluetooth NOT enabled
-                imgBtnStop.setEnabled(false);
                 //sbLeds.setEnabled(false);
                 //sbVertical.setEnabled(false);
             }
         } else {
             bt.print("Device does NOT support Bluetooth!");
-            imgBtnStop.setEnabled(false);
             //sbLeds.setEnabled(false);
             //sbVertical.setEnabled(false);
         }
@@ -402,7 +399,6 @@ public class AvtoActivity extends BaseActivity {
         @Override
         public void onStopTrackingTouch(SeekBar seekBar) {
             tvAction.setText("stop");
-
         }
     };
 
